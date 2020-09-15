@@ -10,7 +10,9 @@ RUN ./bjam --prefix=/opt/moses debug-symbols=off \
 	 -j4 -q
 WORKDIR /
 RUN git clone https://github.com/marcinn/zmifanva.git
-WORKDIR zmifanva/web
+WORKDIR /zmifanva
+RUN git pull
+WORKDIR /zmifanva/web
 RUN virtualenv env && pip install -r requirements.txt
 WORKDIR /
 CMD sh run.sh
